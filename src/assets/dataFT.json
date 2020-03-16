@@ -1,0 +1,275 @@
+{
+    "DataFT": [
+        {
+            "Name": "ลักษณะลำต้น",
+            "FtNo": 1,
+            "group": "groupOfFT1",
+            "FtList": [
+                {
+                    "Name": "กลมแป้นไม่มีพูชัดเจน",
+                    "Value": 1,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=1_1.jpg"
+                },
+                {
+                    "Name": "กลมแป้นพูชัดเจน",
+                    "Value": 2,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=2_2.jpg"
+                },
+                {
+                    "Name": "ทรงกระบอก",
+                    "Value": 3,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=3_3.jpg"
+                },
+                {
+                    "Name": "ไม้ลำ",
+                    "Value": 4,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=4_4.jpg"
+                }
+            ]
+        },
+        {
+            "Name": "จำนวนพู",
+            "FtNo": 2,
+            "group": "groupOfFT2",
+            "FtList": [
+                {
+                    "Name": "น้อยกว่า 10 พู",
+                    "Value": 1,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=6_6.jpg"
+                },
+                {
+                    "Name": "มากกว่า 10 พู",
+                    "Value": 2,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=2_2.jpg"
+                }
+            ]
+        },
+        {
+            "Name": "ลักษณะสันหนาม",
+            "FtNo": 3,
+            "group": "groupOfFT3",
+            "FtList": [
+                {
+                    "Name": "สามเหลี่ยม",
+                    "Value": 1,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=5_5.jpg"
+                },
+                {
+                    "Name": "แผ่แบนซ้อนกันตามขวาง",
+                    "Value": 2,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=6_6.jpg"
+                },
+                {
+                    "Name": "ปุ่มหรือกระบอง",
+                    "Value": 3,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=7_7.jpg"
+                },
+                {
+                    "Name": "เรียบหรือหยักคลื่น",
+                    "Value": 4,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=8_8.jpg"
+                },
+                {
+                    "Name": "หยักคลื่นเป็นแคบคล้ายริ้วครีบ",
+                    "Value": 5,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=9_9.jpg"
+                }
+            ]
+        },
+        {
+            "Name": "การแตกหน่อ",
+            "FtNo": 4,
+            "group": "groupOfFT4",
+            "FtList": [
+                {
+                    "Name": "ไม่มี",
+                    "Value": 1,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=1_1.jpg"
+                },
+                {
+                    "Name": "มี",
+                    "Value": 2,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=4_4.jpg"
+                }
+            ]
+        },
+        {
+            "Name": "การมีหนาม",
+            "FtNo": 5,
+            "group": "groupOfFT5",
+            "FtList": [
+                {
+                    "Name": "ไม่มี",
+                    "Value": 1,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=6_6.jpg"
+                },
+                {
+                    "Name": "มี",
+                    "Value": 2,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=2_2.jpg"
+                }
+            ]
+        },
+        {
+            "Name": "ความยาวหนาม",
+            "FtNo": 6 ,
+            "group": "groupOfFT6",
+            "FtList": [
+                {
+                    "Name": "ไม่มีหนาม",
+                    "Value": 1,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=1_1.jpg"
+                },
+                {
+                    "Name": "สั้น",
+                    "Value": 2,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=2_2.jpg"
+                },
+                {
+                    "Name": "ยาว",
+                    "Value": 3,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=9_9.jpg"
+                }
+            ]
+        },
+        {
+            "Name": "ลักษณะหนาม",
+            "FtNo": 7,
+            "group": "groupOfFT7",
+            "FtList": [
+                {
+                    "Name": "ไม่มีหนาม",
+                    "Value": 1,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=1_1.jpg"
+                },
+                {
+                    "Name": "แข็ง",
+                    "Value": 2,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=9_9.jpg"
+                },
+                {
+                    "Name": "นิ่ม",
+                    "Value": 3,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=3_3.jpg"
+                }
+            ]
+        },
+        {
+            "Name": "ขนเปราะโคนหนาม",
+            "FtNo": 8,
+            "group": "groupOfFT8",
+            "FtList": [
+                {
+                    "Name": "ไม่มี",
+                    "Value": 1,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=3_3.jpg"
+                },
+                {
+                    "Name": "มี",
+                    "Value": 2,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=10_10.jpg"
+                }
+            ]
+        },
+        {
+            "Name": "เซฟาเลี่ยม",
+            "FtNo": 9,
+            "group": "groupOfFT9",
+            "FtList": [
+                {
+                    "Name": "ไม่มี",
+                    "Value": 1,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=2_2.jpg"
+                },
+                {
+                    "Name": "มี",
+                    "Value": 2,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=11_11.jpg"
+                }
+            ]
+        },
+        {
+            "Name": "ขนปุยกลางยอด",
+            "FtNo": 10,
+            "group": "groupOfFT10",
+            "FtList": [
+                {
+                    "Name": "ไม่มี",
+                    "Value": 1,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=6_6.jpg"
+                },
+                {
+                    "Name": "มี",
+                    "Value": 2,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=13_13.jpg"
+                }
+            ]
+        },
+        {
+            "Name": "ตำแหน่งกลางยอด",
+            "FtNo": 11,
+            "group": "groupOfFT11",
+            "FtList": [
+                {
+                    "Name": "กลางยอด",
+                    "Value": 1,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=5_5.jpg"
+                },
+                {
+                    "Name": "ที่ซอกสันหนามใกล้ยอด",
+                    "Value": 2,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=13_13.jpg"
+                },
+                {
+                    "Name": "ที่ซอกสันหนามใกล้ลำต้น",
+                    "Value": 3,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=14_14.jpg"
+                }
+            ]
+        },
+        {
+            "Name": "สีของดอก",
+            "FtNo": 12,
+            "group": "groupOfFT12",
+            "FtList": [
+                {
+                    "Name": "ขาว",
+                    "Value": 1,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=14_14.jpg"
+                },
+                {
+                    "Name": "เหลือง",
+                    "Value": 2,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=13_13.jpg"
+                },
+                {
+                    "Name": "ชมพู",
+                    "Value": 3,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=9_9.jpg"
+                },
+                {
+                    "Name": "แดง",
+                    "Value": 4,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=15_15.jpg"
+                }
+            ]
+        },
+        {
+            "Name": "ความยาวของก้านดอก",
+            "FtNo": 13,
+            "group": "groupOfFT1",
+            "FtList": [
+                {
+                    "Name": "สั้น",
+                    "Value": 1,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=5_5.jpg"
+                },
+                {
+                    "Name": "ยาว",
+                    "Value": 2,
+                    "Url": "http://127.0.0.1:5000/get-image/?name=15_15.jpg"
+                }
+            ]
+        }
+    ]
+}

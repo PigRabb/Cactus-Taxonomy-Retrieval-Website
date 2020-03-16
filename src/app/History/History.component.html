@@ -1,0 +1,206 @@
+<ngx-spinner name="history" bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">กำลังโหลด...</p>
+</ngx-spinner>
+
+<div class="row justify-content-md-center" style="margin-top: 5%;">
+  <div class="col-md-auto">
+    <h4>ประวัติการใช้งาน</h4>
+  </div>
+</div>
+
+<div class="row justify-content-md-center" style="margin-top: 3%;">
+  <div class="col-md-auto">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">เรียงข้อมูลตาม : </span>
+      </div>
+      <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="DataType"
+        [ngModelOptions]="{standalone: true}">
+        <option value="result">ชื่อสายพันธุ์</option>
+        <option value="time">วันและเวลา</option>
+      </select>
+      <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="Sort"
+        [ngModelOptions]="{standalone: true}">
+        <option value="asc">น้อยไปมาก</option>
+        <option value="desc">มากไปน้อย</option>
+      </select>
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+          (click)="searchHistory()">ค้นหา</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-auto">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">ค้นหาตามสายพันธุ์ : </span>
+      </div>
+      <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon"
+        aria-describedby="button-addon1" [(ngModel)]="CactusName" [ngModelOptions]="{standalone: true}">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+          (click)="searchHistory()">ค้นหา</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="statusCheck" class="row justify-content-md-center" style="margin-top: 3%;margin-left: 5%;">
+    <div class="col-md-auto">
+      <table id="example" class="table row-border hover display">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">ชื่อสายพันธุ์</th>
+            <th scope="col">คุณลักษณะ</th>
+            <th scope="col">รูปภาพ</th>
+            <th scope="col">วันที่และเวลา</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of historyData.predict|slice:start:end;let i = index">
+            <th scope="row">{{(pageCurrent*totalPage)+(i+1)}}</th>
+            <td>{{item.Result}}</td>
+            <td><a (click)="setIndexFT(i)" href="#" data-toggle="modal" data-target="#exampleModalLong">ดูคุณลักษณะ</a>
+            </td>
+            <td><a href="#" data-toggle="modal" data-target="#imageModal"
+                (click)="setImageCactus(item.Result)">ดูรูปภาพ</a></td>
+            <td>{{item.Timestamp}}</td>
+          </tr>
+
+        </tbody>
+      </table>
+      <table class="table table-borderless">
+        <thead>
+            <th >
+              <nav aria-label="...">
+                <ul class="pagination">
+                  <li class="page-item {{Previous}}"> 
+                    <a class="page-link" (click)="previousPage()" href="#">ก่อนหน้า</a>
+                  </li>
+                  <li class="page-item {{item}}" *ngFor="let item of pageList;let i=index"><a class="page-link" (click)="setPage(i)" href="#">{{i+1}}</a></li>
+                  <li class="page-item {{Next}}">
+                    <a class="page-link" (click)="nextPage()" href="#">ถัดไป</a>
+                  </li>
+                </ul>
+              </nav>
+            </th>
+        </thead>
+      </table>
+    </div>
+  </div>
+
+
+
+  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">คุณลักษณะ</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row justify-content-md-center">
+              <div class="col-md-auto">
+                <table class="table table-borderless">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>ลักษณะลำต้น</th>
+                      <td>{{historyData.predict[indexFT].Feature[0]}}</td>
+                    </tr>
+                    <tr>
+                      <th>จำนวนพู</th>
+                      <td>{{historyData.predict[indexFT].Feature[1]}}</td>
+                    </tr>
+                    <tr>
+                      <th>ลักษณะสันหนาม</th>
+                      <td>{{historyData.predict[indexFT].Feature[2]}}</td>
+                    </tr>
+                    <tr>
+                      <th>การแตกหน่อ</th>
+                      <td>{{historyData.predict[indexFT].Feature[3]}}</td>
+                    </tr>
+                    <tr>
+                      <th>การมีหนาม</th>
+                      <td>{{historyData.predict[indexFT].Feature[4]}}</td>
+                    </tr>
+                    <tr>
+                      <th>ความยาวหนาม</th>
+                      <td>{{historyData.predict[indexFT].Feature[5]}}</td>
+                    </tr>
+                    <tr>
+                      <th>ลักษณะหนาม</th>
+                      <td>{{historyData.predict[indexFT].Feature[6]}}</td>
+                    </tr>
+                    <tr>
+                      <th>ขนเปราะโคนหนาม</th>
+                      <td>{{historyData.predict[indexFT].Feature[7]}}</td>
+                    </tr>
+                    <tr>
+                      <th>เซฟาเลี่ยม</th>
+                      <td>{{historyData.predict[indexFT].Feature[8]}}</td>
+                    </tr>
+                    <tr>
+                      <th>ขนปุยกลางยอด</th>
+                      <td>{{historyData.predict[indexFT].Feature[9]}}</td>
+                    </tr>
+                    <tr>
+                      <th>ตำแหน่งกลางยอด</th>
+                      <td>{{historyData.predict[indexFT].Feature[10]}}</td>
+                    </tr>
+                    <tr>
+                      <th>สีของดอก</th>
+                      <td>{{historyData.predict[indexFT].Feature[11]}}</td>
+                    </tr>
+                    <tr>
+                      <th>ความยาวของก้านดอก</th>
+                      <td>{{historyData.predict[indexFT].Feature[12]}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">ปิด</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="CactusImage" class="modal fade " id="imageModal" tabindex="-1" role="dialog"
+    aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{NameCactus}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid" style="margin-left: auto;margin-right: auto;">
+            <div *ngFor="let item of CactusImage.Image" class="row justify-content-md-center"
+              style="margin-left: auto;margin-right: auto;">
+              <div class="col-md-auto">
+                <img class="rounded imgC" src="http://127.0.0.1:5000/get-image/?name={{item.Name}}">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">ปิด</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,18 @@
+<!-- <div class="row justify-content-md-center">
+  <div class="col-md-auto">
+    <h4>หน้าจัดการของแอดมิน</h4>
+  </div>
+</div> -->
+<div class="row justify-content-md-center" style="margin-top: 5%;">
+  <div class="col-md-auto">
+    <div class="btn-group btn-group-justified" role="group" aria-label="Basic example" >
+      <button type="button" class="btn btn-outline-primary" (click)="cMennu1()">การจัดการสมาชิก</button>
+      <button type="button" class="btn btn-outline-primary" (click)="cMennu2()">ประวัติการใช้งาน</button>
+      <button type="button" class="btn btn-outline-primary" (click)="cMennu3()">ข้อมูลโดยรวม</button>
+    </div>
+  </div>
+</div>
+
+<app-user-mg  *ngIf="MenuAdmin1"   class="fade-in" style="margin-top: 5%;margin-left: 5%;margin-right: 5%;"></app-user-mg>
+<app-history_admin  *ngIf="MenuAdmin2" class="fade-in" style="margin-top: 5%;margin-left: 5%;margin-right: 5%;"></app-history_admin>
+<app-summary  *ngIf="MenuAdmin3" class="fade-in" style="margin-top: 5%;margin-left: 5%;margin-right: 5%;"></app-summary>

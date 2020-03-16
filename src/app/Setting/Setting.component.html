@@ -1,0 +1,126 @@
+<ngx-spinner
+  name="profile"
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">กำลังโหลด...</p>
+</ngx-spinner>
+
+<div class="row justify-content-md-center" style="margin-top: 4%;">
+  <div class="col-md-auto">
+    <h4>ข้อมูลผู้ใช้งาน</h4>
+  </div>
+</div>
+<div class="row justify-content-md-center" style="margin-top: 2.5%;">
+  <div class="col-md-auto">
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <th scope="row">เลขที่ผู้ใช้งาน : </th>
+          <td>{{userIdU}}</td>
+        </tr>
+        <tr>
+          <th scope="row">อีเมล : </th>
+          <td>{{emailU}}</td>
+        </tr>
+        <tr>
+          <th scope="row">ชื่อ : </th>
+          <td>{{NameU}}</td>
+          <td><a  Data-toggle="modal" data-target="#editName" href="#">แก้ไข</a></td>
+        </tr>
+        <tr>
+          <th scope="row">นามสกุล : </th>
+          <td>{{SurnameU}}</td>
+          <td><a Data-toggle="modal" data-target="#editSurname" href="#">แก้ไข</a></td>
+        </tr>
+        <tr>
+          <th>เปลี่ยนรหัสผ่าน : </th>
+          <td>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">รหัสผ่านเดิม</span>
+              </div>
+              <input type="password" class="form-control" placeholder="รหัสผ่านเดิม" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="oldPassword"
+              [ngModelOptions]="{standalone: true}">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th></th>
+          <td>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">รหัสผ่านใหม่</span>
+              </div>
+              <input type="password"  placeholder="รหัสผ่านใหม่" class="form-control" [(ngModel)]="newPassword"
+              [ngModelOptions]="{standalone: true}">
+              <input type="password"  placeholder="ยืนยันรหัสผ่านใหม่" class="form-control" [(ngModel)]="newPasswordA"
+              [ngModelOptions]="{standalone: true}">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th></th>
+          <td>
+            <button type="button" class="btn btn-outline-success btn-sm btn-block" (click)="changePassword()">ยืนยันเปลี่ยนรหัสผ่าน</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div class="modal fade" id="editName" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">เปลี่ยนชื่อ</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">ชื่อใหม่</span>
+          </div>
+          <input type="text" class="form-control" placeholder="ชื่อใหม่" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="Name"
+          [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-outline-success" (click)="editName()">แก้ไข</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="editSurname" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">เปลี่ยนสกุล</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">นามสกุลใหม่</span>
+          </div>
+          <input type="text" class="form-control" placeholder="นามสกุลใหม่" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="Surname"
+          [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-success" (click)="editSurname()">แก้ไข</button>
+      </div>
+    </div>
+  </div>
+</div>

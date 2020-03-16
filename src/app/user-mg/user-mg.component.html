@@ -1,0 +1,136 @@
+
+<ngx-spinner name="user_mg" bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">กำลังโหลด...</p>
+</ngx-spinner>
+<div class="row head justify-content-md-center">
+  <div class="col-md-auto">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">ค้นหาอีเมล : </span>
+      </div>
+      <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon"
+        aria-describedby="button-addon1" [(ngModel)]="emailC" [ngModelOptions]="{standalone: true}">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+          (click)="searchEmail()">ค้นหา</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-auto">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">ค้นหาชื่อ : </span>
+      </div>
+      <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon"
+        aria-describedby="button-addon1" [(ngModel)]="NameC" [ngModelOptions]="{standalone: true}">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+          (click)="searchName()">ค้นหา</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-auto">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">ค้นหานามสกุล : </span>
+      </div>
+      <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon"
+        aria-describedby="button-addon1" [(ngModel)]="SurnameC" [ngModelOptions]="{standalone: true}">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+          (click)="searchSurname()">ค้นหา</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div  *ngIf="statusCheck" class="row head justify-content-md-center">
+  <div class="col-md-auto">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">เลขที่ผู้้งาน</th>
+          <th scope="col">อีเมล</th>
+          <th scope="col">ชื่อ</th>
+          <th scope="col">นามสกุล</th>
+          <th scope="col">เข้าสู่ระบบล่าสุด</th>
+          <th scope="col">การแบน</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of userData.user|slice:start:end;let i = index">
+          <th scope="row">{{item.Code}}</th>
+          <td>{{item.Email}}</td>
+          <td>{{item.Name}}</td>
+          <td>{{item.Surname}}</td>
+          <td>{{userTime[i]}}</td>
+          <td><button *ngIf="!checkBaned(item.EmV)" type="button" class="btn btn-outline-danger" (click)="setName(item.Name,item.Surname,item.Code)" data-toggle="modal" data-target="#ban" >แบน</button>
+            <button *ngIf="checkBaned(item.EmV)" type="button" class="btn btn-outline-success" (click)="setName(item.Name,item.Surname,item.Code)" data-toggle="modal" data-target="#unban">ปลดแบน</button>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+    <table class="table table-borderless">
+      <thead>
+          <th >
+            <nav aria-label="...">
+              <ul class="pagination">
+                <li class="page-item {{Previous}}"> 
+                  <a class="page-link" (click)="previousPage()" href="#">ก่อนหน้า</a>
+                </li>
+                <li class="page-item {{item}}" *ngFor="let item of pageList;let i=index"><a class="page-link" (click)="setPage(i)" href="#">{{i+1}}</a></li>
+                <li class="page-item {{Next}}">
+                  <a class="page-link" (click)="nextPage()" href="#">ถัดไป</a>
+                </li>
+              </ul>
+            </nav>
+          </th>
+      </thead>
+    </table>
+  </div>
+</div>
+
+
+<div class="modal fade" id="ban" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" >
+      <div class="modal-header">
+        <h5 class="modal-title">แบนผู้ใช้าน</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>ชื่อ : {{name}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">ยกเลิก</button>
+        <button type="button" class="btn btn-outline-danger" (click)="banAccount()">แบน</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade"  id="unban" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">ปลดแบนผู้ใช้งาน</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>ชื่อ : {{name}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">ยกเลิก</button>
+        <button type="button" class="btn btn-outline-success" (click)="unbanAccount()">ปลดแบน</button>
+      </div>
+    </div>
+  </div>
+</div>

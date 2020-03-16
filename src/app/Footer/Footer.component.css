@@ -1,0 +1,25 @@
+.right {
+    float: right;
+   overflow: auto;
+    text-align: right;    
+    font-size: 10px;
+
+  }
+
+.left {
+    float: left;
+    overflow: auto;
+    text-align: left;
+    font-size: 10px;
+
+  }
+.center{
+    margin: auto;
+    overflow: auto;
+    text-align: center;
+    font-size: 2px;
+
+}
+.borderFooter{
+    border: 2px;
+}
